@@ -4,10 +4,10 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.gituser.hassanusman.BR
-import com.gituser.hassanusman.providers.model.UserObserver
 import com.gituser.hassanusman.R
-import com.gituser.hassanusman.viewmodel.UserViewModel
 import com.gituser.hassanusman.databinding.ActivityMainBinding
+import com.gituser.hassanusman.providers.model.UserObserver
+import com.gituser.hassanusman.viewmodel.UserViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.setLifecycleOwner(this)
         val userData = UserObserver()
         userData.name = "Hassan"
         userData.avatar_url = "https://media.giphy.com/media/zv8PVZLXBj81a/giphy.gif"

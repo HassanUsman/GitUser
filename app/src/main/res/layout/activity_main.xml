@@ -5,6 +5,7 @@
     xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable name="userData" type="com.gituser.hassanusman.viewmodel.UserViewModel"/>
+        <variable name="userObserver" type="com.gituser.hassanusman.providers.model.UserObserver"/>
         <variable name="callback" type="com.gituser.hassanusman.views.callback.UserClickCallback"/>
     </data>
 
@@ -20,12 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:lines="1"
         android:text="@={userData.searchUser}"
+        android:lines="1"
         android:hint="@string/searchUser"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteX="20dp" />
+        tools:layout_editor_absoluteX="20dp"
+        bind:setErrorMessage="@{userData.errorMsg}" />
 
         <TextView
             android:id="@+id/txtSearchType"
@@ -73,7 +75,6 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toRightOf="@+id/txtSingleUser"
             app:layout_constraintTop_toBottomOf="@+id/txtSearchType" />
-
 
         <TextView
             android:id="@+id/txtMultiUsers"
@@ -276,4 +277,30 @@
 
 
 </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{userData.visibleView">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:mutableVisibility="@{userData.getLoadingVisibility()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/post_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:adapter="@{userData.getPostListAdapter()}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
 </layout>

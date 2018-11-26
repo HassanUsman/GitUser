@@ -1,9 +1,14 @@
-package com.gituser.hassanusman.providers.repository
+package com.gituser.hassanusman.providers.adapters
 
 import android.databinding.BindingAdapter
+import android.support.design.widget.TextInputEditText
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+
+
+
+
 
 
 @BindingAdapter("bind:avatar_url")
@@ -16,6 +21,11 @@ fun View.visibleOrGone(visible: Boolean) {
      visibility = if (visible) View.VISIBLE else View.GONE
  }
 
+@BindingAdapter("bind:setErrorMessage")
+fun setErrorMessage(view: TextInputEditText, errorMessage: String) {
+    if(errorMessage.isNotEmpty())
+        view.error = errorMessage
+}
 
 
 
