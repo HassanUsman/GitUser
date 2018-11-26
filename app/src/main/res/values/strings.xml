@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Git User</string>
+    <string name="searchUser">Enter a username here</string>
+    <string name="search">search</string>
+    <string name="btn_click_inside">Click Inside</string>
+    <string name="hint_message">Your Message</string>
+    <string name="search_type">Search Type</string>
+</resources>
